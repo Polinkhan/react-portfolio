@@ -22,7 +22,7 @@ function About() {
         borderRadius={"50%"}
         borderColor="white"
       >
-        <Image src="https://polinkhan.github.io/portfolio/images/profile-pic.png" />
+        <Image src="./profile-pic.jpg" borderRadius={"50%"}/>
       </Box>
       <Box py={"5"}>
         <Text fontSize={{ lg: "5xl", md: "4xl", base: "3xl" }}>
