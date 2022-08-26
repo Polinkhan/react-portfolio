@@ -3,7 +3,6 @@ import React from "react";
 import { FaBars } from "react-icons/fa";
 import { IoClose, IoSunny, IoMoon } from "react-icons/io5";
 import { useColourContext } from "../Contexts/ColourContext";
-import { useDataContex } from "../Contexts/DataContext";
 import AdminAuth from "./AdminAuth";
 import ModalView from "./ModalView";
 
