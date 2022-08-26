@@ -1,12 +1,12 @@
 import React from "react";
-import { useDisclosure,Wrap, WrapItem, Text, VStack, Image, IconButton } from "@chakra-ui/react";
+import { useDisclosure, Wrap, WrapItem, Text, VStack, Image, IconButton } from "@chakra-ui/react";
 import { IoAddCircle } from "react-icons/io5";
 import { useColourContext } from "../Contexts/ColourContext";
 import { useDataContex } from "../Contexts/DataContext";
 import ModalView from "./ModalView";
 function Skills() {
   const { bgColour } = useColourContext();
-  const { skillsData, setSkillsData } = useDataContex();
+  const { isPassBool, skillsData, setSkillsData } = useDataContex();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -26,11 +26,11 @@ function Skills() {
           </WrapItem>
         ))}
         <WrapItem>
-          <VStack className="skillBox" w="160px" h="140px" justifyContent="space-around" marginTop={"80px"}>
+          <VStack display={isPassBool?"flex":"none"} className="skillBox" w="160px" h="140px" justifyContent="space-around" marginTop={"80px"}>
             <IconButton onClick={onOpen} fontSize={"8xl"} color="gray.400" icon={<IoAddCircle />} w="100px" h="100px" bg={bgColour} borderRadius="50%"></IconButton>
           </VStack>
         </WrapItem>
-        <ModalView isOpen={isOpen} onClose={onClose} title={"Add Skill Item"} items={["name","src"]} data={skillsData} setData={setSkillsData}/>
+        <ModalView isOpen={isOpen} onClose={onClose} title={"Add Skill Item"} items={["name", "src"]} data={skillsData} setData={setSkillsData} />
       </Wrap>
     </VStack>
   );

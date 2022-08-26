@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Input, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, VStack, HStack, Spacer } from "@chakra-ui/react";
+import { useToast, Input, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, VStack, HStack, Spacer } from "@chakra-ui/react";
 
 function ModalView({ isOpen, onClose, title, items, data, setData }) {
+  const toast = useToast();
   const myArr = items.map(() => "");
   const [array, setArray] = useState(myArr);
 
@@ -12,9 +13,38 @@ function ModalView({ isOpen, onClose, title, items, data, setData }) {
   }
 
   function handleSubmit() {
-    const newData = {};
-    items.map((item, i) => (newData[item] = array[i]));
-    setData([...data, newData]);
+    if (typeof data === "boolean") {
+      if (array[0] === "Polin@102030") {
+        setData(!data);
+        !data && toast({
+          title: "WelCome",
+          description: "Ready to Change ...",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+        onClose();
+      } else
+        toast({
+          title: "Wrong Pass",
+          description: "You Have Entered a Wrong Pass",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+    } else {
+      onClose();
+      const newData = {};
+      items.map((item, i) => (newData[item] = array[i]));
+      setData([...data, newData]);
+      toast({
+        title: "Item Addes",
+        description: "Suceessfully added a item",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   }
 
   useEffect(() => {

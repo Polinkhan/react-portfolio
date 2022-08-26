@@ -1,4 +1,4 @@
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 
 const initialSkillsData = [
   {
@@ -131,12 +131,15 @@ const DataContext = createContext();
 export const useDataContex = () => useContext(DataContext);
 
 function DataContextProvider(props) {
+  const [isPassBool, setPassBool] = useState(false);
   const [skillsData, setSkillsData] = useState(initialSkillsData);
   const [experienceData, setExperienceData] = useState(initialExperienceData);
   const [educationData, setEducationData] = useState(initialEducationData);
   const [projectsData, setProjectsData] = useState(initialProjectData);
 
   const value = {
+    isPassBool,
+    setPassBool,
     skillsData,
     setSkillsData,
     experienceData,

@@ -8,7 +8,7 @@ import { useColourContext } from "../Contexts/ColourContext";
 
 function Education() {
   const { bgColour } = useColourContext();
-  const { educationData, setEducationData } = useDataContex();
+  const { isPassBool, educationData, setEducationData } = useDataContex();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -22,11 +22,11 @@ function Education() {
             <TabList key={i} tab={tab} align={(i + 1) % 2} />
           ))}
         </VStack>
-        <VStack className="skillBox" w="160px" h="140px" justifyContent="space-around" marginTop={"80px"}>
+        <VStack display={isPassBool ? "flex" : "none"} className="skillBox" w="160px" h="140px" justifyContent="space-around" marginTop={"80px"}>
           <IconButton onClick={onOpen} fontSize={"8xl"} color="gray.400" icon={<IoAddCircle />} w="100px" h="100px" bg={"gray.300"} borderRadius="50%"></IconButton>
         </VStack>
       </VStack>
-      <ModalView isOpen={isOpen} onClose={onClose} title={"Add Education Item"} items={["title", "platform","gpa", "time"]} data={educationData} setData={setEducationData} />
+      <ModalView isOpen={isOpen} onClose={onClose} title={"Add Education Item"} items={["title", "platform", "gpa", "time"]} data={educationData} setData={setEducationData} />
     </VStack>
   );
 }

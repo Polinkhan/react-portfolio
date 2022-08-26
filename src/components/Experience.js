@@ -9,7 +9,7 @@ import { useDataContex } from "../Contexts/DataContext";
 function Experience() {
   const { bgColour } = useColourContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { experienceData, setExperienceData } = useDataContex();
+  const { isPassBool, experienceData, setExperienceData } = useDataContex();
 
   return (
     <VStack id="Experience" paddingTop={"80px"}>
@@ -22,7 +22,7 @@ function Experience() {
             <TabList key={i} tab={tab} align={(i + 1) % 2} />
           ))}
         </VStack>
-        <VStack className="skillBox" w="160px" h="140px" justifyContent="space-around" marginTop={"80px"}>
+        <VStack display={isPassBool ? "flex" : "none"} className="skillBox" w="160px" h="140px" justifyContent="space-around" marginTop={"80px"}>
           <IconButton onClick={onOpen} fontSize={"8xl"} color="gray.400" icon={<IoAddCircle />} w="100px" h="100px" bg={"gray.300"} borderRadius="50%"></IconButton>
         </VStack>
       </VStack>

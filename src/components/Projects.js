@@ -37,7 +37,7 @@ function Card({ project }) {
 }
 
 function Projects() {
-  const { projectsData, setProjectsData } = useDataContex();
+  const { isPassBool, projectsData, setProjectsData } = useDataContex();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { bgColour } = useColourContext();
 
@@ -51,7 +51,7 @@ function Projects() {
           <Card key={i} project={project} />
         ))}
       </Wrap>
-      <VStack className="skillBox" w="160px" h="140px" justifyContent="space-around" marginTop={"80px"}>
+      <VStack display={isPassBool ? "flex" : "none"} className="skillBox" w="160px" h="140px" justifyContent="space-around" marginTop={"80px"}>
         <IconButton onClick={onOpen} fontSize={"8xl"} color="gray.400" icon={<IoAddCircle />} w="100px" h="100px" bg={bgColour} borderRadius="50%"></IconButton>
       </VStack>
       <ModalView isOpen={isOpen} onClose={onClose} title={"Add Project Item"} items={["imageUrl", "update", "title", "link", "using"]} data={projectsData} setData={setProjectsData} />
