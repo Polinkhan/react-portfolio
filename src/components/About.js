@@ -1,9 +1,20 @@
-import { Box, Button, HStack, Image, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  HStack,
+  Image,
+  Link,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import React from "react";
+import { useColourContext } from "../Contexts/ColourContext";
 
 function About() {
+  const { bgColour } = useColourContext();
+
   return (
-    <VStack bg={"aliceblue"} my={"150"} w={"100%"} h={"500px"}>
+    <VStack id="" bg={bgColour} mt={"250px"} w={"100%"} h={"500px"}>
       <Box
         marginTop={{ lg: "-120px", md: "-105px", base: "-90px" }}
         width={{ lg: "240px", md: "210px", base: "180px" }}
@@ -18,22 +29,32 @@ function About() {
           ABU SAYED POLIN
         </Text>
       </Box>
-      <Box w={"90%"} py={""}>
+      <Box w={"90%"}>
         <Text fontSize={{ lg: "4xl", md: "3xl", base: "2xl" }}>
           Software Engineer
         </Text>
         <Text fontSize={{ lg: "3xl", md: "2xl", base: "xl" }}>
           Dhaka, Bangladesh
         </Text>
-        <Text h={{lg:"20px",base:"80px"}}lineHeight={"2"} mt={"5"} fontSize={"sm"} color={"gray"}>
+        <Text
+          h={{ lg: "20px", base: "80px" }}
+          lineHeight={"2"}
+          mt={"5"}
+          fontSize={"sm"}
+          color={"gray"}
+        >
           Lorem, Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Ipsum, Enim.
           Doloribus Laudantium Quaerat Fuga. Repellat?
         </Text>
       </Box>
 
       <HStack pt={"8"} justifyContent={"center"}>
-        <Button mx={"2"} colorScheme="teal"> Get In touch</Button>
-        <Button mx={"2"} colorScheme="teal" variant={"outline"}> Download CV</Button>
+        <Button mx={"2"} colorScheme="teal">
+          <Link href="#Contacts">Get In touch</Link>
+        </Button>
+        <Button mx={"2"} colorScheme="teal" variant={"outline"}>
+          Download CV
+        </Button>
       </HStack>
     </VStack>
   );
