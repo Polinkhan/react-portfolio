@@ -1,44 +1,32 @@
-import { VStack, Text } from "@chakra-ui/react";
+import { VStack, Text, IconButton, useDisclosure } from "@chakra-ui/react";
 import TabList from "./TabList";
 import React from "react";
+import ModalView from "./ModalView";
+import { IoAddCircle } from "react-icons/io5";
+import { useDataContex } from "../Contexts/DataContext";
 import { useColourContext } from "../Contexts/ColourContext";
 
-const education = [
-  {
-    title: "Stamford University Bangladesh",
-    platform: "Bachalor Of Science (Cse)",
-    gpa: "CGPA : 3.75 (Approx)",
-    time: "January 2019 To Present",
-  },
-  {
-    title: "Dr. Mahbubur Rahman Mollah Collage, Dhaka",
-    platform: "Higher School Certificate(Hsc)",
-    gpa: "GPA : 4.83",
-    time: "2016 - 2018",
-  },
-  {
-    title: "Mohiuddin Badal Collegiate School, Dhaka",
-    platform: "Secondary School Certificate(Ssc)",
-    gpa: "GPA: 4.94",
-    time: "2005 - 2016",
-  },
-];
-
 function Education() {
-
-const { bgColour } = useColourContext();
-
+  const { bgColour } = useColourContext();
+  const { educationData, setEducationData } = useDataContex();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <VStack id="Education" paddingTop={"80px"}>
       <Text marginBottom={"80px"} fontSize={"4xl"}>
-      Education
+        Education
       </Text>
       <VStack bg={bgColour} w={"100%"}>
-        {education.map((tab, i) => (
-          <TabList key={i} tab={tab} align={(i + 1) % 2} />
-        ))}
+        <VStack w={"100%"}>
+          {educationData.map((tab, i) => (
+            <TabList key={i} tab={tab} align={(i + 1) % 2} />
+          ))}
+        </VStack>
+        <VStack className="skillBox" w="160px" h="140px" justifyContent="space-around" marginTop={"80px"}>
+          <IconButton onClick={onOpen} fontSize={"8xl"} color="gray.400" icon={<IoAddCircle />} w="100px" h="100px" bg={"gray.300"} borderRadius="50%"></IconButton>
+        </VStack>
       </VStack>
+      <ModalView isOpen={isOpen} onClose={onClose} title={"Add Education Item"} items={["title", "platform","gpa", "time"]} data={educationData} setData={setEducationData} />
     </VStack>
   );
 }

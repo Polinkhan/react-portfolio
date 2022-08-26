@@ -1,28 +1,15 @@
-import { Text, VStack } from "@chakra-ui/react";
+import { Text, VStack, IconButton, useDisclosure } from "@chakra-ui/react";
 import TabList from "./TabList";
 import React from "react";
 import { useColourContext } from "../Contexts/ColourContext";
-
-const experience = [
-  {
-    title: "Stamford University Bangladesh",
-    platform: "(Student)",
-    time: "January 2019 To Present",
-  },
-  {
-    title: "Web Development",
-    platform: "(Self)",
-    time: "January 2022 To Present",
-  },
-  {
-    title: "Problem Solving [C++ , Java]",
-    platform: "(Hackerrank)",
-    time: "January 2020 To Present",
-  },
-];
+import { IoAddCircle } from "react-icons/io5";
+import ModalView from "./ModalView";
+import { useDataContex } from "../Contexts/DataContext";
 
 function Experience() {
   const { bgColour } = useColourContext();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { experienceData, setExperienceData } = useDataContex();
 
   return (
     <VStack id="Experience" paddingTop={"80px"}>
@@ -30,10 +17,16 @@ function Experience() {
         Experience
       </Text>
       <VStack bg={bgColour} w={"100%"}>
-        {experience.map((tab, i) => (
-          <TabList key={i} tab={tab} align={(i + 1) % 2} />
-        ))}
+        <VStack w={"100%"}>
+          {experienceData.map((tab, i) => (
+            <TabList key={i} tab={tab} align={(i + 1) % 2} />
+          ))}
+        </VStack>
+        <VStack className="skillBox" w="160px" h="140px" justifyContent="space-around" marginTop={"80px"}>
+          <IconButton onClick={onOpen} fontSize={"8xl"} color="gray.400" icon={<IoAddCircle />} w="100px" h="100px" bg={"gray.300"} borderRadius="50%"></IconButton>
+        </VStack>
       </VStack>
+      <ModalView isOpen={isOpen} onClose={onClose} title={"Add Experience Item"} items={["title", "platform", "time"]} data={experienceData} setData={setExperienceData} />
     </VStack>
   );
 }

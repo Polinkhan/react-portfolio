@@ -1,47 +1,10 @@
 import React from "react";
-import {
-  Wrap,
-  WrapItem,
-  Text,
-  VStack,
-  Image,
-  Box,
-  Badge,
-  Link,
-} from "@chakra-ui/react";
+import { useDisclosure, Wrap, WrapItem, IconButton, Text, VStack, Image, Box, Badge, Link } from "@chakra-ui/react";
+import { useDataContex } from "../Contexts/DataContext";
+import { IoAddCircle } from "react-icons/io5";
+import { useColourContext } from "../Contexts/ColourContext";
+import ModalView from "./ModalView";
 
-const projectList = [
-  {
-    imageUrl: "./Project.png",
-    url: "https://polinkhan.github.io/freechat/",
-    update: "working on",
-    title: "Realtime Chat Application",
-    link: "https://github.com/Polinkhan/freechat.git",
-    using: "Html, Css, Bootstrap, JavaScript, Jquery, Nodejs(Socket) ",
-  },
-  {
-    imageUrl: "./Project.png",
-    url: "https://memo-app-react.herokuapp.com/",
-    update: "new",
-    title: "Shop Stock Maintenance",
-    link: "https://github.com/Polinkhan/freechat.git",
-    using: "Html, Css, React, Firebase ",
-  },
-  {
-    imageUrl: "./Project.png",
-    update: "new",
-    title: "Bangla Licence Plate Detection Using Machine Learning",
-    link: "https://github.com/Polinkhan/freechat.git",
-    using: "Computer Vision, Python, Machine Learning & Deep learning",
-  },
-  {
-    imageUrl: "./Project.png",
-    update: "new",
-    title: "Sample Project",
-    link: "https://github.com/Polinkhan/",
-    using: ".....",
-  },
-];
 function Card({ project }) {
   return (
     <WrapItem paddingTop={"10px"}>
@@ -74,16 +37,24 @@ function Card({ project }) {
 }
 
 function Projects() {
+  const { projectsData, setProjectsData } = useDataContex();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { bgColour } = useColourContext();
+
   return (
     <VStack pt={"80px"} id={"Projects"}>
       <Text pb={"80px"} fontSize={"4xl"}>
         Projects
       </Text>
       <Wrap spacing={{ md: "12", base: "6" }} justify={"center"}>
-        {projectList.map((project, i) => (
+        {projectsData.map((project, i) => (
           <Card key={i} project={project} />
         ))}
       </Wrap>
+      <VStack className="skillBox" w="160px" h="140px" justifyContent="space-around" marginTop={"80px"}>
+        <IconButton onClick={onOpen} fontSize={"8xl"} color="gray.400" icon={<IoAddCircle />} w="100px" h="100px" bg={bgColour} borderRadius="50%"></IconButton>
+      </VStack>
+      <ModalView isOpen={isOpen} onClose={onClose} title={"Add Project Item"} items={["imageUrl", "update", "title", "link", "using"]} data={projectsData} setData={setProjectsData} />
     </VStack>
   );
 }
