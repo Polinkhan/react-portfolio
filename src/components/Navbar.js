@@ -36,7 +36,7 @@ function Navbar() {
 
   return (
     <HStack id="About" className="Navbar">
-      <HStack py={"3"} px={"8"} bg={bgColour} w={"100%"} position={"fixed"} top={"0"} zIndex={"999"}>
+      <HStack h={"70px"} py={"3"} px={"8"} bg={bgColour} w={"100%"} position={"fixed"} top={"0"} zIndex={"999"}>
         <HStack w={{ lg: "25%", base: "80%" }}>
           <Text fontSize={"4xl"}>POLINKHAN</Text>
         </HStack>

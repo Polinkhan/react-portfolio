@@ -21,7 +21,7 @@ function NavScrollPosBar() {
   useEffect(() => {}, []);
 
   return (
-    <Stack w={"100%"} className="prog" position={"fixed"} top={"78px"}>
+    <Stack w={"100%"} className="prog" position={"fixed"} top={"70px"}>
       <Progress borderRadius={"full"} value={scrollPos} size="xs" colorScheme="pink" />;
     </Stack>
   );
