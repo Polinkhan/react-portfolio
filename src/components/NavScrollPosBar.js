@@ -22,7 +22,7 @@ function NavScrollPosBar() {
 
   return (
     <Stack w={"100%"} className="prog" position={"fixed"} top={"70px"}>
-      <Progress borderRadius={"full"} value={scrollPos} size="xs" colorScheme="pink" />;
+      <Progress borderRadius={"full"} value={scrollPos} size="xs" colorScheme="teal" />;
     </Stack>
   );
 }
