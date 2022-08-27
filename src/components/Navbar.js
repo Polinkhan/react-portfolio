@@ -4,22 +4,26 @@ import { FaBars } from "react-icons/fa";
 import { IoClose, IoSunny, IoMoon } from "react-icons/io5";
 import { useColourContext } from "../Contexts/ColourContext";
 import AdminAuth from "./AdminAuth";
-import ModalView from "./ModalView";
 
 const navList = ["About", "Skills", "Experience", "Education", "Projects"];
-
 function Slider({ isOpen, onToggle }) {
   const { bgColour } = useColourContext();
+
+  function handleclick() {
+    setTimeout(() => {
+      onToggle();
+    }, 50);
+  }
 
   return (
     <Slide direction="top" in={isOpen} style={{ zIndex: 10 }}>
       <VStack marginRight={"2"} py="40px" bg={bgColour} mt="16" rounded="md" shadow="md" display={{ lg: "none", base: "flex" }}>
         {navList.map((list, i) => (
-          <Link textAlign={"center"} py={"4"} href={"#" + list} w={"120px"} onClick={onToggle} key={i}>
+          <Link textAlign={"center"} py={"4"} href={"#" + list} w={"120px"} onClick={handleclick} key={i}>
             {list}
           </Link>
         ))}
-        <AdminAuth/>
+        <AdminAuth />
       </VStack>
     </Slide>
   );
@@ -48,7 +52,7 @@ function Navbar() {
           <IconButton variant={"outline"} borderRadius="full" fontSize={"xl"} icon={<IoSunny />}>
             Contact us
           </IconButton>
-          <AdminAuth/>
+          <AdminAuth />
         </HStack>
         <HStack display={{ lg: "none", base: "flex" }} justifyContent={"end"} w={"20%"}>
           <IconButton fontSize={"lg"} icon={isOpen ? <IoClose /> : <FaBars />} variant="outline" colorScheme={"teal"} onClick={onToggle}></IconButton>

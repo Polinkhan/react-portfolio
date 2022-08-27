@@ -8,16 +8,14 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import NavScrollPosBar from "./components/NavScrollPosBar";
 
 function App() {
   return (
     <>
       <Navbar />
-      <Container
-        w="100%"
-        maxW={{ base: "95vw", sm: "95vw", md: "85vw", lg: "80vw" }}
-        scrollBehavior={"smooth"}
-      >
+      <NavScrollPosBar />
+      <Container w="100%" maxW={{ base: "95vw", sm: "95vw", md: "85vw", lg: "80vw" }} scrollBehavior={"smooth"}>
         <About />
         <Skills />
         <Experience />

@@ -12,7 +12,7 @@ function AdminAuth() {
       <Button variant={"outline"} colorScheme={"teal"} borderRadius="full" onClick={onOpen}>
         {isPassBool?"SingOut":"SignIn"}
       </Button>
-      <ModalView isOpen={isOpen} onClose={onClose} title={"Enter Your Pass"} items={["Admin Password"]} data={isPassBool} setData={setPassBool} />
+      <ModalView isOpen={isOpen} onClose={onClose} title={"Admin Login"} items={["Admin Password"]} data={isPassBool} setData={setPassBool} />
     </>
   );
 }

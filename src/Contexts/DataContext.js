@@ -106,9 +106,9 @@ const initialProjectData = [
   {
     imageUrl: "./Project.png",
     url: "https://memo-app-react.herokuapp.com/",
-    update: "new",
+    update: "working on",
     title: "Shop Stock Maintenance",
-    link: "https://github.com/Polinkhan/freechat.git",
+    link: "https://github.com/Polinkhan/shop_memo.git",
     using: "Html, Css, React, Firebase ",
   },
   {

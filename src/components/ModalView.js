@@ -5,6 +5,7 @@ function ModalView({ isOpen, onClose, title, items, data, setData }) {
   const toast = useToast();
   const myArr = items.map(() => "");
   const [array, setArray] = useState(myArr);
+  const [btnBool, setBtnBool] = useState(false);
 
   function setArrayFunc(i, e) {
     let arr = array.map((elem) => elem);
@@ -13,43 +14,48 @@ function ModalView({ isOpen, onClose, title, items, data, setData }) {
   }
 
   function handleSubmit() {
-    if (typeof data === "boolean") {
-      if (array[0] === "Polin@102030") {
-        setData(!data);
-        !data && toast({
-          title: "WelCome",
-          description: "Ready to Change ...",
+    setBtnBool(true);
+    setTimeout(() => {
+      setBtnBool(false);
+      if (typeof data === "boolean") {
+        if (array[0] === "Polin@102030") {
+          setData(!data);
+          !data &&
+            toast({
+              title: "WelCome",
+              description: "Ready to Change ...",
+              status: "success",
+              duration: 3000,
+              isClosable: true,
+            });
+          onClose();
+        } else
+          toast({
+            title: "Wrong Pass",
+            description: "You Have Entered a Wrong Pass",
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+          });
+      } else {
+        onClose();
+        const newData = {};
+        items.map((item, i) => (newData[item] = array[i]));
+        setData([...data, newData]);
+        toast({
+          title: "Item Addes",
+          description: "Suceessfully added a item",
           status: "success",
           duration: 3000,
           isClosable: true,
         });
-        onClose();
-      } else
-        toast({
-          title: "Wrong Pass",
-          description: "You Have Entered a Wrong Pass",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-    } else {
-      onClose();
-      const newData = {};
-      items.map((item, i) => (newData[item] = array[i]));
-      setData([...data, newData]);
-      toast({
-        title: "Item Addes",
-        description: "Suceessfully added a item",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-      });
-    }
+      }
+    }, 500);
   }
 
-  useEffect(() => {
-    console.log(array);
-  }, [array]);
+  // useEffect(() => {
+  //   console.log(array);
+  // }, [array]);
 
   return (
     <>
@@ -74,9 +80,13 @@ function ModalView({ isOpen, onClose, title, items, data, setData }) {
           </ModalBody>
           <ModalFooter>
             <HStack>
-              <Button onClick={handleSubmit}>Submit</Button>
+              <Button colorScheme="teal" isLoading={btnBool} loadingText="Submitting" onClick={handleSubmit}>
+                Submit
+              </Button>
               <Spacer />
-              <Button onClick={onClose}>Close</Button>
+              <Button colorScheme="teal" variant="outline" onClick={onClose}>
+                Close
+              </Button>
             </HStack>
           </ModalFooter>
         </ModalContent>
