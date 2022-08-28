@@ -13,9 +13,9 @@ import NavScrollPosBar from "./components/NavScrollPosBar";
 function App() {
   return (
     <>
-      <Navbar />
       <NavScrollPosBar />
-      <Container w="100%" maxW={{ base: "95vw", sm: "95vw", md: "85vw", lg: "80vw" }} scrollBehavior={"smooth"}>
+      <Navbar />
+      <Container maxW={{ base: "95vw", sm: "95vw", md: "85vw", lg: "80vw" }}>
         <About />
         <Skills />
         <Experience />

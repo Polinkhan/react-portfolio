@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useToast, Input, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, VStack, HStack, Spacer } from "@chakra-ui/react";
+import { useDataContex } from "../Contexts/DataContext";
 
 function ModalView({ isOpen, onClose, title, items, data, setData }) {
   const toast = useToast();
   const myArr = items.map(() => "");
   const [array, setArray] = useState(myArr);
   const [btnBool, setBtnBool] = useState(false);
+  const {themeColor} = useDataContex()
 
   function setArrayFunc(i, e) {
     let arr = array.map((elem) => elem);
@@ -80,11 +82,11 @@ function ModalView({ isOpen, onClose, title, items, data, setData }) {
           </ModalBody>
           <ModalFooter>
             <HStack>
-              <Button colorScheme="teal" isLoading={btnBool} loadingText="Submitting" onClick={handleSubmit}>
+              <Button color={"white"} bg={"rgb("+themeColor+")"} borderRadius={"full"} _hover="" isLoading={btnBool} loadingText="Submitting" onClick={handleSubmit}>
                 Submit
               </Button>
               <Spacer />
-              <Button colorScheme="teal" variant="outline" onClick={onClose}>
+              <Button color={"rgb("+themeColor+")"} borderRadius={"full"} border={"1px solid rgb("+themeColor+")"} bg={""} _hover="" onClick={onClose}>
                 Close
               </Button>
             </HStack>

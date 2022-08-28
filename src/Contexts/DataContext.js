@@ -132,6 +132,7 @@ export const useDataContex = () => useContext(DataContext);
 
 function DataContextProvider(props) {
   const [isPassBool, setPassBool] = useState(false);
+  const [themeColor, setThemeColor] = useState("112,95,220");
   const [skillsData, setSkillsData] = useState(initialSkillsData);
   const [experienceData, setExperienceData] = useState(initialExperienceData);
   const [educationData, setEducationData] = useState(initialEducationData);
@@ -140,6 +141,8 @@ function DataContextProvider(props) {
   const value = {
     isPassBool,
     setPassBool,
+    themeColor,
+    setThemeColor,
     skillsData,
     setSkillsData,
     experienceData,

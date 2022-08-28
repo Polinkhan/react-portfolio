@@ -6,7 +6,7 @@ import { useDataContex } from "../Contexts/DataContext";
 import ModalView from "./ModalView";
 function Skills() {
   const { bgColour } = useColourContext();
-  const { isPassBool, skillsData, setSkillsData } = useDataContex();
+  const { isPassBool,themeColor, skillsData, setSkillsData } = useDataContex();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -17,7 +17,7 @@ function Skills() {
       <Wrap spacingX={{ md: "12", base: "6" }} justify={"center"}>
         {skillsData.map((skill, i) => (
           <WrapItem key={i}>
-            <VStack className="skillBox" w="160px" h="140px" justifyContent="space-around" bg={bgColour} borderRadius="lg" marginTop={"80px"}>
+            <VStack className="skillBox" w="160px" h="140px" justifyContent="space-around" style={{background: "rgba("+themeColor+", 0.1)",transition:"ease-in 0.2s"}} borderRadius="lg" marginTop={"80px"}>
               <Image className="skill_logo" mt={"-30px"} w="100px" p={"2"} bg={"white"} borderRadius={"lg"} src={skill.src} />
               <Text className="skill_text" textAlign={"center"} borderRadius={"full"} w={"100px"} bg={"white"} color={"gray"} fontWeight={"bold"}>
                 {skill.name}

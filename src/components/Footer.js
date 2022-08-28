@@ -9,13 +9,13 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { FaFacebook, FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
-import { useColourContext } from "../Contexts/ColourContext";
+import { useDataContex } from "../Contexts/DataContext";
 
 function Footer() {
-  const { bgColour } = useColourContext();
+  const { themeColor } = useDataContex();
 
   return (
-    <VStack bg={bgColour} px="20">
+    <VStack style={{ background: "rgba(" + themeColor + ", 0.1)", transition: "ease-in 0.2s" }}px="20">
       <HStack w={"100%"} py={"8"}>
         <VStack w={"30%"}>
           <Text py={"8"} fontSize={"2xl"} fontWeight={"bold"}>

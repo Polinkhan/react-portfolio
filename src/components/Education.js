@@ -8,7 +8,7 @@ import { useColourContext } from "../Contexts/ColourContext";
 
 function Education() {
   const { bgColour } = useColourContext();
-  const { isPassBool, educationData, setEducationData } = useDataContex();
+  const { isPassBool,themeColor, educationData, setEducationData } = useDataContex();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -16,7 +16,7 @@ function Education() {
       <Text marginBottom={"80px"} fontSize={"4xl"}>
         Education
       </Text>
-      <VStack bg={bgColour} w={"100%"}>
+      <VStack w={"100%"} borderRadius={"lg"} style={{background: "rgba("+themeColor+", 0.1)",transition:"ease-in 0.2s"}}>
         <VStack w={"100%"}>
           {educationData.map((tab, i) => (
             <TabList key={i} tab={tab} align={(i + 1) % 2} />

@@ -4,12 +4,12 @@ import { useDataContex } from "../Contexts/DataContext";
 import ModalView
  from "./ModalView";
 function AdminAuth() {
-  const { isPassBool, setPassBool } = useDataContex();
+  const { isPassBool, setPassBool,themeColor } = useDataContex();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Button variant={"outline"} colorScheme={"teal"} borderRadius="full" onClick={onOpen}>
+      <Button minW={"100px"} color={"rgb("+themeColor+")"} bg={""} _hover="" borderRadius="full" border={"1px solid rgb("+themeColor+")"} onClick={onOpen}>
         {isPassBool?"SingOut":"SignIn"}
       </Button>
       <ModalView isOpen={isOpen} onClose={onClose} title={"Admin Login"} items={["Admin Password"]} data={isPassBool} setData={setPassBool} />
