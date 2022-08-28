@@ -57,47 +57,51 @@ function Navbar() {
 
   return (
     <HStack id="About" className="Navbar">
-      <Box id="Home"></Box>
-      <HStack h={"70px"} py={"3"} px={"8"} bg={"white"} w={"100%"} position={"fixed"} top={{ lg: "0" }} bottom={{ base: "0" }} zIndex={"999"}>
-        <HStack w={{ lg: "20%", base: "80%" }}>
-          <Text fontSize={"lg"} fontWeight={"bold"}>
-            POLIN <span style={{ color: "rgb(" + themeColor + ")", transition: "ease-in 0.2s" }}>KHAN</span>
-          </Text>
-        </HStack>
+      <Box id="Home">
+        <HStack h={"70px"}  w={"100%"} bg={"white"} position={"fixed"} top={{ lg: "0" }} bottom={{ base: "0" }} zIndex={"999"}>
+          <HStack h={"100%"} w={"100%"} style={{ background: "rgba(" + themeColor + ", 0.2)", transition: "ease-in 0.2s" }} py={"3"} px={"8"}>
+            <HStack w={{ lg: "20%", base: "80%" }}>
+              <Text fontSize={"lg"} fontWeight={"bold"}>
+                POLIN <span style={{ color: "rgb(" + themeColor + ")", transition: "ease-in 0.2s" }}>KHAN</span>
+              </Text>
+            </HStack>
 
-        <HStack w={"80%"} display={{ lg: "flex", base: "none" }} justifyContent={"end"}>
-          {navList.map((list, i) => (
-            <Button _hover={{ color: "rgb(" + themeColor + ")" }} pl={"12"} variant={"unstyled"} onClick={() => (document.location.href = "#" + list)} key={i}>
-              {list}
-            </Button>
-          ))}
-          <Box px={"12"}>
-            <Popover>
-              <PopoverTrigger>
-                <IconButton size={"sm"} bg={"rgb(" + themeColor + ")"} borderRadius={"50%"} _hover={{}} color={"white"} icon={<FaRegHandPointer />} />
-              </PopoverTrigger>
-              <PopoverContent>
-                <PopoverArrow />
-                <PopoverCloseButton />
-                <PopoverHeader>Select Theme</PopoverHeader>
-                <PopoverBody>
-                  <HStack justifyContent={"space-around"}>
-                    {themes.map((theme, i) => (
-                      <IconButton key={i} size={"sm"} bg={"rgb(" + theme + ")"} onClick={() => setThemeColor(theme)} borderRadius={"50%"} _hover={{}} />
-                    ))}
-                  </HStack>
-                </PopoverBody>
-              </PopoverContent>
-            </Popover>
-          </Box>
-          <AdminAuth />
+            <HStack w={"80%"} display={{ lg: "flex", base: "none" }} justifyContent={"end"}>
+              {navList.map((list, i) => (
+                <Button _hover={{ color: "rgb(" + themeColor + ")" }} pl={"12"} variant={"unstyled"} onClick={() => (document.location.href = "#" + list)} key={i}>
+                  {list}
+                </Button>
+              ))}
+              <Box px={"12"}>
+                <Popover>
+                  <PopoverTrigger>
+                    <IconButton size={"sm"} bg={"rgb(" + themeColor + ")"} borderRadius={"50%"} _hover={{}} color={"white"} icon={<FaRegHandPointer />} />
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <PopoverArrow />
+                    <PopoverCloseButton />
+                    <PopoverHeader>Select Theme</PopoverHeader>
+                    <PopoverBody>
+                      <HStack justifyContent={"space-around"}>
+                        {themes.map((theme, i) => (
+                          <IconButton key={i} size={"sm"} bg={"rgb(" + theme + ")"} onClick={() => setThemeColor(theme)} borderRadius={"50%"} _hover={{}} />
+                        ))}
+                      </HStack>
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
+              </Box>
+              <AdminAuth />
+            </HStack>
+            <HStack display={{ lg: "none", base: "flex" }} justifyContent={"end"} w={"20%"} onClick={onToggle}>
+              <Text fontSize={"xl"} color={"rgb(" + themeColor + ")"}>
+                {isOpen ? <IoClose /> : <IoGridOutline />}
+              </Text>
+            </HStack>
+          </HStack>
         </HStack>
-        <HStack display={{ lg: "none", base: "flex" }} justifyContent={"end"} w={"20%"} onClick={onToggle}>
-          <Text fontSize={"xl"} color={"rgb(" + themeColor + ")"}>
-            {isOpen ? <IoClose /> : <IoGridOutline />}
-          </Text>
-        </HStack>
-      </HStack>
+      </Box>
+
       <Slider isOpen={isOpen} onToggle={onToggle} />
     </HStack>
   );
