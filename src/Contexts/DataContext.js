@@ -123,7 +123,7 @@ const initialProjectData = [
     update: "new",
     title: "Sample Project",
     link: "https://github.com/Polinkhan/",
-    using: ".....",
+    using: "........",
   },
 ];
 
@@ -153,7 +153,9 @@ function DataContextProvider(props) {
     setProjectsData,
   };
 
-  return <DataContext.Provider value={value}>{props.children}</DataContext.Provider>;
+  return (
+    <DataContext.Provider value={value}>{props.children}</DataContext.Provider>
+  );
 }
 
 export default DataContextProvider;
