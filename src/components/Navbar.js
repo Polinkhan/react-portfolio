@@ -29,7 +29,7 @@ function Slider({ isOpen, onToggle }) {
           </HStack>
           <Grid templateRows="repeat(2, 1fr)" templateColumns="repeat(3, 1fr)" gap={5}>
             {navList.map((list, i) => (
-              <GridItem key={i} mx={"auto"} h={"100px"} w={"100px"} rowSpan={1} colSpan={1} borderRadius={"50%"} style={{ background: "rgba(" + themeColor + ", 0.2)", transition: "ease-in 0.2s" }}>
+              <GridItem key={i} mx={"auto"} h={"100px"} w={"100px"} rowSpan={1} colSpan={1} color={"rgb("+themeColor+")"}>
                 <VStack h={"100%"} justifyContent={"center"} onClick={(e) => handleclick(list)}>
                   <Text mb={"-2"} fontSize={"2xl"}>
                     {navIcon[i]}

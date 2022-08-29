@@ -8,7 +8,7 @@ import { BsMouse, BsArrowDown, BsFacebook, BsGithub, BsInstagram, BsLinkedin } f
 function BlobBox() {
   const { themeColor } = useDataContex();
   return (
-    <HStack w={{ md: "40%", base: "300px" }} h={{ md: "100%", base: "40%" }} justifyContent={"center"}>
+    <HStack maxW={"400px"} w={{ md: "40%", base: "80%" }} h={{ md: "100%", base: "40%" }} justifyContent={"center"}>
       <svg className="blobBox" style={{ fill: "rgb(" + themeColor + ")", transition: "ease-in 0.2s" }} viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
         <mask id="mask0" mask-type="alpha">
           <path
