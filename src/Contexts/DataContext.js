@@ -123,7 +123,7 @@ const initialProjectData = [
     update: "new",
     title: "Sample Project",
     link: "https://github.com/Polinkhan/",
-    using: "...........",
+    using: ".............",
   },
 ];
 
