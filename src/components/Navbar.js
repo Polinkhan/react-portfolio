@@ -166,7 +166,7 @@ function Navbar() {
           >
             <HStack w={{ lg: "20%", base: "80%" }}>
               <Text fontSize={"lg"} fontWeight={"bold"}>
-                POLIN{" "}
+                POLIN
                 <span
                   style={{
                     color: "rgb(" + themeColor + ")",
@@ -177,7 +177,6 @@ function Navbar() {
                 </span>
               </Text>
             </HStack>
-
             <HStack
               w={"80%"}
               display={{ lg: "flex", base: "none" }}
